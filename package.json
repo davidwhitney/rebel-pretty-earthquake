@@ -21,7 +21,8 @@
     "jest-cli": "latest",
     "ts-jest": "latest",
     "@types/node": "latest",
-    "@types/jest": "latest"
+    "@types/jest": "latest",
+    "pixi.js": "latest"
   },
   "engines": {
     "node": "12.x"
