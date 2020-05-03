@@ -1,16 +1,30 @@
 import * as PIXI from 'pixi.js'
 
-console.log("Hello from client side TypeScript");
+
+interface IScene {
+  update: () => void  
+}
+
+interface IDrawable {
+  draw: () => void
+}
+  
+class Router {
+  public scenes: IScene[];
+  constructor() {
+    scenes = [];
+  }
+  
+  public registerScene(scene: IScene): Router {
+    return this;
+  }
+}
+
 
 
 async function loadPromise(loader) {
-  return new Promise((resolve, reject) => {    
-    loader.load((loader, resources) => {
-      resolve({ loader, resources });
-    });    
-  });
+  return new Promise((resolve, reject) => loader.load((loader, resources) => resolve(resources)));
 }
-
 
 async function init() {  
 
@@ -18,9 +32,8 @@ async function init() {
   document.body.appendChild(app.view);
 
   app.loader.add("far", "https://cdn.glitch.com/80146c7e-c8f9-483d-a85c-39f2fc095273%2Fbg-far.png?v=1588542214676");
-  app.loader.add("near", "https://cdn.glitch.com/80146c7e-c8f9-483d-a85c-39f2fc095273%2Fbg-mid.png?v=1588542216156");
-  
-  const { loader, resources } = <any>(await loadPromise(app.loader));
+  app.loader.add("near", "https://cdn.glitch.com/80146c7e-c8f9-483d-a85c-39f2fc095273%2Fbg-mid.png?v=1588542216156");  
+  const resources = <any>(await loadPromise(app.loader));
   
   const farTexture = resources.far.texture;
   const far = new PIXI.TilingSprite(farTexture, 512, 256);
