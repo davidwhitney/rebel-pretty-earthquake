@@ -9,6 +9,10 @@ interface IDrawable {
   draw: () => void
 }
   
+class GameContext {
+  
+}
+  
 class Router {
   public scenes: IScene[];
   constructor() {
@@ -47,7 +51,7 @@ async function init() {
   const resources = <any>(await loadPromise(app.loader));
   
   const farTexture = resources.far.texture;
-  const far = new PIXI.TilingSprite(farTexture, 512, 256);
+  const far = new PIXI.TilingSprite(farTexture, 640, 360);
   far.position.x = 0;
   far.position.y = 0;
   far.tilePosition.x = 0;
@@ -55,7 +59,7 @@ async function init() {
   app.stage.addChild(far);
 
   const midTexture = resources.near.texture;
-  const mid = new PIXI.TilingSprite(midTexture, 512, 256);
+  const mid = new PIXI.TilingSprite(midTexture, 640, 360);
   mid.position.x = 0;
   mid.position.y = 128;
   mid.tilePosition.x = 0;
