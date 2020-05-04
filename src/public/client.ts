@@ -12,21 +12,32 @@ interface IDrawable {
 class Router {
   public scenes: IScene[];
   constructor() {
-    scenes = [];
+    this.scenes = [];
   }
   
   public registerScene(scene: IScene): Router {
     return this;
   }
 }
+  
+class SceneBase {
+  constructor() {
+    
+  }
+}
 
+class SplashScreen extends SceneBase implements IScene {
+  public update() {
+    console.log("Hi");
+  }
+}
 
 
 async function loadPromise(loader) {
   return new Promise((resolve, reject) => loader.load((loader, resources) => resolve(resources)));
 }
 
-async function init() {  
+async function init() {
 
   var app = new PIXI.Application({ width: 640, height: 360 });
   document.body.appendChild(app.view);
