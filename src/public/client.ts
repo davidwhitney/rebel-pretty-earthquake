@@ -13,6 +13,19 @@ class GameContext {
   
 }
   
+class SceneRouteTable {  
+  public scenes: IScene[];
+  public renderers: IDrawable[];
+  
+  construtor() {
+    
+  }  
+}
+  
+class Runtime {
+  
+}
+  
 class Router {
   public scenes: IScene[];
   constructor() {
